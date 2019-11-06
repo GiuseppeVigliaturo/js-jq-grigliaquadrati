@@ -5,6 +5,7 @@ Opzionale: Sopra alla griglia deve esserci un contatore che conta quanti rossi e
 
 var userName = prompt("CIAO INSERISCI IL TUO NOME");
 var verificato = false;
+var i=0;
 
 
 while (verificato === false) {
@@ -22,7 +23,7 @@ while (verificato === false) {
 }
 alert("Ciao  " + userName + "  in questo gioco devi indovinare il maggior numero possibile di quadrati rossi");
 
-$(".concorrente").text(userName);
+$(".concorrente").text("concorrente   " + userName);
 
 
 var R=0;
@@ -34,6 +35,8 @@ $( document ).ready(function() {
       //con un if verifico se ho cliccato sulla cella vedendo se ha già una
       // classe cliccato se non ce l'ha allora la aggiungo con addClass e non posso più ricliccarci
         if ($(this).hasClass("red") && !$(this).hasClass("cliccato")) {
+
+
 
             $(this).css("background", "red");
             //se è la prima volta che lo clicco cambio il colore
@@ -49,7 +52,10 @@ $( document ).ready(function() {
             document.getElementById('puntirossi').innerHTML =R;
             document.getElementById('punteggio').innerHTML ="il tuo punteggio attuale è: " + punteggio;
 
-        }else if ($(this).hasClass("green") && !$(this).hasClass("cliccato")) {
+        }
+
+        else if ($(this).hasClass("green") && !$(this).hasClass("cliccato")) {
+
 
             $(this).css("background", "green");
             //se è la prima volta che lo clicco cambio il colore
@@ -58,12 +64,7 @@ $( document ).ready(function() {
             //se è la prima volta che lo clicco allora gli aggiungo la classe cliccato
             V++;
             punteggio -= 1;
-            //da cancellare poi
-            if (V === 3) {
-              alert("fai veramente schifo neanche un rosso");
-            }
-
-
+          
             document.getElementById('puntiverdi').innerHTML = V;
 
             if (punteggio <= 0) {
@@ -75,19 +76,22 @@ $( document ).ready(function() {
 
         }
 
+        else if ($(this).hasClass("cliccato")) {
+           alert("ma sei caduto da piccolo non vedi che è gia colorato");
+         }
+
     });
 });
 
-
-
-
-// $(".grid-item").each(function() {
-//     var number = numRandom(1,64);;
-//     $(this).addClass("numero-" + number.toString());
-// });
 
 
 //funzioni
 function numRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
+
+
+// $(".grid-item").each(function() {
+//     var number = numRandom(1,64);;
+//     $(this).addClass("numero-" + number.toString());
+// });
