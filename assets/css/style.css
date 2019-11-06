@@ -1,0 +1,26 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.contatore
+{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+#puntirossi{
+  font-size: 3rem;
+}
+#puntiverdi{
+  font-size: 3rem;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 30px;
+}
