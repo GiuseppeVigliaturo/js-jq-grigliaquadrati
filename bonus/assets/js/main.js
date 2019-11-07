@@ -6,6 +6,9 @@ Opzionale: Sopra alla griglia deve esserci un contatore che conta quanti rossi e
 var userName = prompt("CIAO INSERISCI IL TUO NOME");
 var verificato = false;
 var i=0;
+var j=0;
+var listarossi= [];
+var numGenerato;
 
 
 while (verificato === false) {
@@ -30,6 +33,33 @@ var R=0;
 var V=0;
 var punteggio = 0;
 $( document ).ready(function() {
+
+
+  //   //assegno classi random
+
+while (listarossi.length < 15) { //finchè il mio array non arriva a 16 tu continua a popolarlo
+numGenerato = numRandom(1,64); //generami numeri casuali da 1 a 100 alla volta
+
+if (listarossi.includes(numGenerato) == false) { //se il numero è già presente dimmelo
+  listarossi.push(numGenerato); //pusha il numero nell'array
+}
+
+}
+
+console.log(listarossi);
+
+  $(".grid-item").each(function(i) {
+
+for (var j = 0; j < listarossi.length; j++) {
+  if (listarossi.includes(i)){
+    $(this).addClass("red");
+  }
+  else {
+    $(this).addClass("green");
+  }
+}
+
+});
 
     $(".grid-item").click(function(){
       //con un if verifico se ho cliccato sulla cella vedendo se ha già una
@@ -64,7 +94,7 @@ $( document ).ready(function() {
             //se è la prima volta che lo clicco allora gli aggiungo la classe cliccato
             V++;
             punteggio -= 1;
-          
+
             document.getElementById('puntiverdi').innerHTML = V;
 
             if (punteggio <= 0) {
